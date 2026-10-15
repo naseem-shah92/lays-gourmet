@@ -1,15 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Playfair_Display, Cinzel } from "next/font/google";
 import "./globals.css";
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-cinzel",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+};
+
 export const metadata: Metadata = {
-  title: "Lay's Gourmet | Yogurt & Herb - Limited Chef Edition",
-  description: "Experience luxury in every bite. The sophisticated fusion of rich Greek Yogurt and hand-picked aromatic Mediterranean herbs.",
-  keywords: ["Lay's Gourmet", "Yogurt & Herb", "Luxury Potato Chips", "Chef Edition", "Gourmet Snacks"],
-  openGraph: {
-    title: "Lay's Gourmet | Yogurt & Herb",
-    description: "Luxury In Every Bite - Limited Chef Edition",
-    type: "website",
-  },
+  title: "Lay's Gourmet | Yogurt & Herb — Chef Reserve Edition",
+  description: "An extraordinary scrollytelling culinary journey into Lay's Gourmet Yogurt & Herb. Thin-cut select russet potatoes, slow-kettle fried and infused with Mediterranean Greek yogurt and fresh garden dill.",
+  keywords: ["Lay's Gourmet", "Yogurt & Herb", "Potato Chips", "Kettle Fried", "Chef Reserve", "Scrollytelling"],
+  authors: [{ name: "Lay's Gourmet Culinary Lab" }],
 };
 
 export default function RootLayout({
@@ -18,16 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="font-sans bg-[#06080d] text-slate-100 antialiased selection:bg-gold-500/30 selection:text-gold-200">
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} ${cinzel.variable} bg-black text-white antialiased selection:bg-brand-green/30 selection:text-cream-500`}
+    >
+      <body className="bg-black min-h-screen font-sans overflow-x-hidden antialiased">
         {children}
       </body>
     </html>

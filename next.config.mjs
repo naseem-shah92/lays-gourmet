@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'assets.stickpng.com'],
+    unoptimized: true,
   },
+  transpilePackages: ["framer-motion", "lucide-react"],
 };
 
 export default nextConfig;
